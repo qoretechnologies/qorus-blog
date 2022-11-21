@@ -346,7 +346,7 @@ hash: (2 members)
 
     >ℹ️ Note: This file is located in the `Target directory` specified during the new job interface creation. 
 
-4. Add `logInfo("Hello, world! -- code example");` to the "run" function.
+4. Because you'll be printing the log statement in Python, add `print("Hello, world! -- code example");` to the `run` function.
 
 __Running the job, through UI:__
 
