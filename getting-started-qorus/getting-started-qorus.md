@@ -35,7 +35,7 @@ This will create a PostgreSQL database schema for Qorus, and local volumes for p
 
 With RBAC disabled, you can connect to Qorus by visiting https://localhost:8011 without authentication. There, you'll have access to the Qorus dashboard.
 
-![Image-showing-the-qorus-dashboard](./assets/qorus-dashboard.png)
+![Image-showing-the-qorus-dashboard](./assets/dashboard.png)
 
 > ℹ️ Note: Your browser might issue a security warning when trying to reach Qorus at `localhost:8011`. This is because Qorus is running with a self-signed certificate. You can safely ignore this warning.
 
@@ -225,6 +225,8 @@ As you can see from the interface hierarchy view to the left, Qorus classifies i
 
 The `qorus-api` Data Provider factory provides the `log-message`  API provider that logs a message according to the arguments. The `qorus-api`  Data Provider Factory is provided by Qorus and provides a set of APIs that can be used in `FSMs` to perform tasks in Qorus. API data providers provide introspection, they can be browsed, and all their arguments and return types are documented and can be viewed in the IDE.
 
+![gif showing Fsm creation](./assets/gettingStartedFsm.gif)
+
 ### Creating a Job: A No-Code Approach
 
 1. In the interface hierarchy view, click on the `New file` (create new) icon next to the `Job` interface.
@@ -274,6 +276,8 @@ The `qorus-api` Data Provider factory provides the `log-message`  API provider t
 
 > ℹ️ Note: In most cases, both the command-line and the UI can be used for the same tasks.
 
+![Gif showin no code job creation](./assets/gettingStartedNoCodeJob.gif)
+
 __Running the job, through UI:__
 
 1. Open a browser and navigate to https://localhost:8011 to be greeted by the Qorus dashboard.
@@ -286,7 +290,7 @@ __Running the job, through UI:__
 
 5. Go to the __Log__ tab on the side pane to see the log from the job.
 
-![gif showing qorus job being started through ui](./assets/qorus-no-code-ui.gif)
+![gif showing qorus job being started through ui](./assets/gettingStartedNoCodeUI.gif)
 
 __Running the job, through command-line:__
 
@@ -306,7 +310,7 @@ hash: (2 members)
   status : "COMPLETE"
 ```
 
-![gif showing qorus job being started through cmd](./assets/qorus-no-code-cmd.gif)
+![gif showing qorus job being started through cmd](./assets/gettingStartedNoCodecli.gif)
 
 ### Creating a Job: A Code Approach
 
@@ -324,9 +328,11 @@ hash: (2 members)
 
     4. `Base class name`: `QorusJob` - is the abstract Qorus job class
 
-    5. `Class name`: `GettingStartedHelloWorldExampleCode`
+    5. `language`: `python`
 
-    6. `Schedule` :
+    6. `Class name`: `GettingStartedHelloWorldExampleCode`
+
+    7. `Schedule` :
 
         * `Minute`: `0`
         * `Hour`: `1`
@@ -334,19 +340,21 @@ hash: (2 members)
         * `Month`: `1`
         * `Weekday`: `*`
 
-    7. `Version`: `1.0`
+    8. `Version`: `1.0`
 
-    8. From the Select Fields list to the left of the Fill Data form, click on the plus button next to `Active` field and toggle it `false`
+    9. From the Select Fields list to the left of the Fill Data form, click on the plus button next to `Active` field and toggle it `false`
 
-    9. From the list, add `Groups` and set it to `EXAMPLES`
+    10. From the list, add `Groups` and set it to `EXAMPLES`
 
-    10. Hit `Submit` to save the job
+    11. Hit `Submit` to save the job
 
 3. Hitting submit will open the "getting-started-hello-world-example-code-1.0.qjob" file.
 
     >ℹ️ Note: This file is located in the `Target directory` specified during the new job interface creation. 
 
-4. Because you'll be printing the log statement in Python, add `print("Hello, world! -- code example");` to the `run` function.
+4. Add `logInfo("Hello, world! -- code example");` to the `run` function.
+
+![Gif showing job creation through code approach](./assets/gettingStartedCodeJob.gif)
 
 __Running the job, through UI:__
 
@@ -360,7 +368,7 @@ __Running the job, through UI:__
 
 5. Go to the __Log__ tab on the side pane to see the log for the job.
 
-![gif showing qorus job being started through ui](./assets/qorus-code-ui.gif)
+![gif showing qorus job being started through ui](./assets/gettingStartedCodeCodeUI.gif)
 
 __Running the job, through the command-line:__
 
@@ -372,6 +380,6 @@ __Running the job, through the command-line:__
 
 2. In the side pane, navigate to the "Log" tab to view the job's log.
 
-![gif showing qorus job being started through cmd](./assets/qorus-code-cmd.gif)
+![gif showing qorus job being started through cmd](./assets/gettingStartedCodeCli.gif)
 
 You might've observed that the "no-code" version of the example will take more time to implement. However, in cases where a certain IT challenge needs to be solved potentially many times in the future, and possibly by developers unfamiliar with the implementation details, using a "no-code" approach will dramatically reduce the time and cost of future maintenance as well as enabling easy reuse of the solution, whereas a pure code-based approach will take more time, will cost more, and will be subject to higher levels of risk.
